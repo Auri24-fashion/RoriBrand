@@ -192,3 +192,46 @@ footer {
 #contatti a:hover {
     color: #00bfff; /* Azzurro quando il link è hoverato */
 }
+/* Progetti Passati */
+#progetti {
+    background-color: #e0ffe0; /* Verde chiaro */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#progetti h2 {
+    font-size: 2.5em;
+    color: #4b0082; /* Viola scuro */
+}
+
+.galleria-progetti {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.progetto {
+    width: 45%;
+    margin: 15px 0;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progetto img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.progetto h3 {
+    font-size: 1.8em;
+    color: #ff1493; /* Magenta */
+    margin-bottom: 10px;
+}
+
+.progetto p {
+    font-size: 1.2em;
+    color: #333;
+}
