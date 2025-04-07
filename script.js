@@ -151,5 +151,89 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.style.display = "none";
     });
 });
+// 👗✨ Benvenuto nel mondo creativo di Aurora Cappai ✨👗
+// Qui sotto trovi i "punti di cucitura" digitali che danno vita al tuo portfolio.
+
+// Quando il tessuto della pagina è pronto...
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ✂️ Cucitura morbida tra le sezioni
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const destino = document.querySelector(link.getAttribute("href"));
+            destino?.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+    // 🎨 Evidenziazione elegante della sezione corrente
+    const sezioni = document.querySelectorAll("section");
+    const menu = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+        let attuale = "";
+        sezioni.forEach(sezione => {
+            if (scrollY >= sezione.offsetTop - 60) {
+                attuale = sezione.id;
+            }
+        });
+        menu.forEach(link => {
+            link.classList.toggle("attivo", link.getAttribute("href") === `#${attuale}`);
+        });
+
+        document.getElementById("back-to-top").style.display = scrollY > 300 ? "block" : "none";
+    });
+
+    // 💫 Animazione di comparsa: come una modella che entra in passerella
+    const elementi = document.querySelectorAll("img, .progetto");
+    const sguardo = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+                sguardo.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    elementi.forEach(e => sguardo.observe(e));
+
+    // 👠 Bottone “Torna in cima” (per sfilare di nuovo dall’inizio)
+    const su = document.createElement("button");
+    su.id = "back-to-top";
+    su.textContent = "↑";
+    su.style.display = "none";
+    document.body.appendChild(su);
+    su.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // 🖋️ Macchina da scrivere: per raccontare con eleganza
+    const titolo = document.querySelector("#home h1");
+    const frase = "Benvenuto nel mio portfolio";
+    let i = 0;
+    function scrivi() {
+        if (i < frase.length) {
+            titolo.textContent += frase[i++];
+            setTimeout(scrivi, 80);
+        }
+    }
+    titolo.textContent = "";
+    scrivi();
+
+    // 🖼️ Lightbox per ammirare i dettagli
+    const overlay = document.createElement("div");
+    overlay.id = "lightbox-overlay";
+    overlay.style.display = "none";
+    const imgZoom = document.createElement("img");
+    overlay.appendChild(imgZoom);
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll("#portfolio img").forEach(img => {
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+            imgZoom.src = img.src;
+            overlay.style.display = "flex";
+        });
+    });
+
+    overlay.addEventListener("click", () => overlay.style.display = "none");
+});
 
 
