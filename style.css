@@ -235,3 +235,19 @@ footer {
     font-size: 1.2em;
     color: #333;
 }
+/* Fade-in effect */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+img, .progetto {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Link attivo nel menu */
+nav a.attivo {
+    font-weight: bold;
+    color: #d96c9b; /* o un colore che si intona con il tuo stile */
+}
