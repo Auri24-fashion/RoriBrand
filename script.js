@@ -204,18 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(su);
     su.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // 🖋️ Macchina da scrivere: per raccontare con eleganza
-    const titolo = document.querySelector("#home h1");
-    const frase = "Benvenuto nel mio portfolio";
-    let i = 0;
-    function scrivi() {
-        if (i < frase.length) {
-            titolo.textContent += frase[i++];
-            setTimeout(scrivi, 80);
-        }
-    }
-    titolo.textContent = "";
-    scrivi();
 
     // 🖼️ Lightbox per ammirare i dettagli
     const overlay = document.createElement("div");
