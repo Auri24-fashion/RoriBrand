@@ -164,33 +164,7 @@ footer {
     color: white;
     padding: 20px 0;
 }
-/* Contatti */
-#contatti {
-    padding: 40px 20px;
-    background-color: #e0ffe0; /* Verde chiaro */
-    text-align: center;
-}
 
-#contatti h2 {
-    font-size: 2.5em;
-    color: #4b0082; /* Viola scuro */
-}
-
-#contatti p {
-    font-size: 1.2em;
-    color: #333;
-    margin: 20px 0;
-    line-height: 1.6;
-}
-
-#contatti a {
-    color: #ff1493; /* Colore magenta per i link */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#contatti a:hover {
-    color: #00bfff; /* Azzurro quando il link è hoverato */
 }
 /* Progetti Passati */
 #progetti {
