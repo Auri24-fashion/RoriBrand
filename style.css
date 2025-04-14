@@ -490,4 +490,46 @@ nav a.attivo {
       align-items: center;
     }
   }
+  /* Stili generali per desktop */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .carousel img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .contact-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  /* Media Query per tablet (max-width: 768px) */
+  @media (max-width: 768px) {
+    .carousel {
+      flex-direction: column;
+    }
+  
+    .contact-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  /* Media Query per smartphone (max-width: 480px) */
+  @media (max-width: 480px) {
+    .carousel img {
+      width: 100%;
+    }
+  
+    .contact-section {
+      padding: 10px;
+    }
+  }
   
