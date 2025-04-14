@@ -484,4 +484,10 @@ nav a.attivo {
   .social-links a:hover {
     color: #00bfff; /* Azzurro */
   }
+  @media (max-width: 600px) {
+    .social-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
   
