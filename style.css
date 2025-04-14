@@ -436,7 +436,8 @@ nav a.attivo {
 
 .carousel-images img {
     min-width: 100%;
-    height: auto;
+    height: 400%;
+    object-fit: cover;
     display: block;
     border-radius: 10px;
 }
