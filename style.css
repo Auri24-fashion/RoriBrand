@@ -369,3 +369,54 @@ nav a.attivo {
     border: 4px solid white;
     border-radius: 8px;
 }
+#chi-sono {
+    padding: 40px 20px;
+    background-color: #fff5f8; /* sfondo rosa chiaro */
+}
+
+.chi-sono-contenuto {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.chi-sono-immagini {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    flex-shrink: 0;
+}
+
+.chi-sono-immagini img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.chi-sono-testo {
+    flex: 1;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chi-sono-contenuto {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .chi-sono-testo {
+        text-align: left;
+    }
+
+    .chi-sono-immagini {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
+}
