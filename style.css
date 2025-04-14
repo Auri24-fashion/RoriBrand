@@ -307,7 +307,7 @@ form button:hover {
     transition: opacity 1s ease, transform 1s ease;
 }
 img, .progetto {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(20px);
 }
 
