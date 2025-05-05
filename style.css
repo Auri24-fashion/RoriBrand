@@ -64,34 +64,38 @@ nav a.attivo {
 #chi-sono {
     padding: 40px 20px;
     background-color: #fff5f8;
-}
-
-.chi-sono-contenuto {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.chi-sono-immagini {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    max-width: 300px;
-    flex-shrink: 0;
-}
-
-.chi-sono-immagini img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    object-fit: cover;
-}
-
-.chi-sono-testo {
-    flex: 1;
-    font-size: 1.1em;
-}
+    
+    .chi-sono-contenuto {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+        padding: 0 1rem;
+      }
+      
+      .chi-sono-immagini {
+        flex: 1 1 300px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      
+      .chi-sono-immagini img {
+        width: 48%;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      
+      .chi-sono-testo {
+        flex: 1 1 300px;
+        text-align: center;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+    
 
 /* Sezione Progetti */
 #progetti {
