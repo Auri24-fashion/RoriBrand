@@ -1,122 +1,58 @@
-// script.js
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     console.log("🌟 Benvenuto nel portfolio di Aurora Cappai! 🌟");
 
-    // 1. Scroll fluido per i link del menu
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
+    // ✂️ Scroll fluido tra le sezioni
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", e => {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) target.scrollIntoView({ behavior: "smooth" });
         });
     });
 
-    // 2. Evidenziazione del link attivo mentre scrolli
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+    // 🎯 Evidenziazione del link attivo durante lo scroll
+    const sezioni = document.querySelectorAll("section");
+    const menuLinks = document.querySelectorAll("nav a");
 
     window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute("id");
+        let sezioneAttiva = "";
+        sezioni.forEach(sez => {
+            if (scrollY >= sez.offsetTop - 60) {
+                sezioneAttiva = sez.id;
             }
         });
-
-        navLinks.forEach(link => {
-            link.classList.remove("attivo");
-            if (link.getAttribute("href") === `#${current}`) {
-                link.classList.add("attivo");
-            }
-        });
-    });
-
-    // 3. Animazione fade-in per immagini e progetti
-    const osservati = document.querySelectorAll("img, .progetto");
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("fade-in");
-                observer.unobserve(entry.target); // animazione solo la prima volta
-            }
-        });
-    }, {
-        threshold: 0.2
-    });
-
-    osservati.forEach(el => observer.observe(el));
-});
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("🌟 Benvenuto nel portfolio di Aurora Cappai! 🌟");
-
-    // 1. Scroll fluido per i link del menu
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
-
-    // 2. Evidenziazione del link attivo mentre scrolli
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute("id");
-            }
+        menuLinks.forEach(link => {
+            link.classList.toggle("attivo", link.getAttribute("href") === `#${sezioneAttiva}`);
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove("attivo");
-            if (link.getAttribute("href") === `#${current}`) {
-                link.classList.add("attivo");
-            }
-        });
-
-        // 3. Mostra/Nasconde bottone "Torna su"
-        const backToTop = document.getElementById("back-to-top");
-        if (backToTop) {
-            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+        // ⬆️ Mostra/Nascondi bottone “Torna su”
+        const btnTornaSu = document.getElementById("back-to-top");
+        if (btnTornaSu) {
+            btnTornaSu.style.display = scrollY > 300 ? "block" : "none";
         }
     });
 
-    // 4. Animazione fade-in per immagini e progetti
+    // 💫 Animazione di comparsa (fade-in)
     const osservati = document.querySelectorAll("img, .progetto");
-    const observer = new IntersectionObserver(entries => {
+    const osservatore = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("fade-in");
-                observer.unobserve(entry.target);
+                osservatore.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.2
-    });
-    osservati.forEach(el => observer.observe(el));
+    }, { threshold: 0.2 });
+    osservati.forEach(el => osservatore.observe(el));
 
-    // 5. Bottone "Torna su"
-    const backToTop = document.createElement("button");
-    backToTop.id = "back-to-top";
-    backToTop.innerHTML = "↑";
-    document.body.appendChild(backToTop);
-    backToTop.style.display = "none";
-    backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    // 🔝 Bottone “Torna su”
+    const tornaSu = document.createElement("button");
+    tornaSu.id = "back-to-top";
+    tornaSu.textContent = "↑";
+    tornaSu.style.display = "none";
+    document.body.appendChild(tornaSu);
+    tornaSu.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // 6. Effetto macchina da scrivere in homepage
+    // 🎬 Effetto macchina da scrivere in homepage
     const titolo = document.querySelector("#home h1");
     const testo = "Benvenuto nel mio portfolio";
     let i = 0;
@@ -127,85 +63,12 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(scriviTesto, 80);
         }
     }
-    titolo.textContent = "";
-    scriviTesto();
+    if (titolo) {
+        titolo.textContent = "";
+        scriviTesto();
+    }
 
-    // 7. Lightbox semplice per immagini portfolio
-    const immagini = document.querySelectorAll("#portfolio img");
-    const overlay = document.createElement("div");
-    overlay.id = "lightbox-overlay";
-    overlay.style.display = "none";
-    const lightboxImg = document.createElement("img");
-    overlay.appendChild(lightboxImg);
-    document.body.appendChild(overlay);
-
-    immagini.forEach(img => {
-        img.style.cursor = "zoom-in";
-        img.addEventListener("click", () => {
-            lightboxImg.src = img.src;
-            overlay.style.display = "flex";
-        });
-    });
-
-    overlay.addEventListener("click", () => {
-        overlay.style.display = "none";
-    });
-});
-// 👗✨ Benvenuto nel mondo creativo di Aurora Cappai ✨👗
-// Qui sotto trovi i "punti di cucitura" digitali che danno vita al tuo portfolio.
-
-// Quando il tessuto della pagina è pronto...
-document.addEventListener("DOMContentLoaded", () => {
-
-    // ✂️ Cucitura morbida tra le sezioni
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", e => {
-            e.preventDefault();
-            const destino = document.querySelector(link.getAttribute("href"));
-            destino?.scrollIntoView({ behavior: "smooth" });
-        });
-    });
-
-    // 🎨 Evidenziazione elegante della sezione corrente
-    const sezioni = document.querySelectorAll("section");
-    const menu = document.querySelectorAll("nav a");
-
-    window.addEventListener("scroll", () => {
-        let attuale = "";
-        sezioni.forEach(sezione => {
-            if (scrollY >= sezione.offsetTop - 60) {
-                attuale = sezione.id;
-            }
-        });
-        menu.forEach(link => {
-            link.classList.toggle("attivo", link.getAttribute("href") === `#${attuale}`);
-        });
-
-        document.getElementById("back-to-top").style.display = scrollY > 300 ? "block" : "none";
-    });
-
-    // 💫 Animazione di comparsa: come una modella che entra in passerella
-    const elementi = document.querySelectorAll("img, .progetto");
-    const sguardo = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("fade-in");
-                sguardo.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-    elementi.forEach(e => sguardo.observe(e));
-
-    // 👠 Bottone “Torna in cima” (per sfilare di nuovo dall’inizio)
-    const su = document.createElement("button");
-    su.id = "back-to-top";
-    su.textContent = "↑";
-    su.style.display = "none";
-    document.body.appendChild(su);
-    su.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-
-    // 🖼️ Lightbox per ammirare i dettagli
+    // 🖼️ Lightbox per immagini del portfolio
     const overlay = document.createElement("div");
     overlay.id = "lightbox-overlay";
     overlay.style.display = "none";
@@ -220,22 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.style.display = "flex";
         });
     });
-
     overlay.addEventListener("click", () => overlay.style.display = "none");
-});
-document.querySelectorAll('.carousel').forEach(carousel => {
-    const images = carousel.querySelector('.carousel-images');
-    const imgs = images.querySelectorAll('img');
-    let index = 0;
 
-    carousel.querySelector('.next').addEventListener('click', () => {
-        index = (index + 1) % imgs.length;
-        images.style.transform = `translateX(-${index * 100}%)`;
-    });
+    // 🎠 Carousel per gallerie
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        const images = carousel.querySelector('.carousel-images');
+        const imgs = images.querySelectorAll('img');
+        let index = 0;
 
-    carousel.querySelector('.prev').addEventListener('click', () => {
-        index = (index - 1 + imgs.length) % imgs.length;
-        images.style.transform = `translateX(-${index * 100}%)`;
+        carousel.querySelector('.next')?.addEventListener('click', () => {
+            index = (index + 1) % imgs.length;
+            images.style.transform = `translateX(-${index * 100}%)`;
+        });
+
+        carousel.querySelector('.prev')?.addEventListener('click', () => {
+            index = (index - 1 + imgs.length) % imgs.length;
+            images.style.transform = `translateX(-${index * 100}%)`;
+        });
     });
 });
 
