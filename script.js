@@ -1,4 +1,4 @@
-[⚠️ Suspicious Content] document.addEventListener("DOMContentLoaded", () => {
+[ Suspicious Content] document.addEventListener("DOMContentLoaded", () => {
     console.log("🌟 Benvenuto nel portfolio di Aurora Cappai! 🌟");
 
     // ✂️ Scroll fluido tra le sezioni
