@@ -134,3 +134,99 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("✨ Portfolio di Aurora Cappai caricato!");
+
+    // 1. Scroll fluido per i link del menu
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute("href"));
+            target?.scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+    // 2. Evidenziazione link attivo durante lo scroll
+    const sezioni = document.querySelectorAll("section");
+    const menu = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+        let attuale = "";
+        sezioni.forEach(sezione => {
+            if (scrollY >= sezione.offsetTop - 60) {
+                attuale = sezione.id;
+            }
+        });
+        menu.forEach(link => {
+            link.classList.toggle("attivo", link.getAttribute("href") === `#${attuale}`);
+        });
+    });
+
+    // 3. Bottone Torna su
+    const su = document.createElement("button");
+    su.id = "back-to-top";
+    su.textContent = "↑";
+    su.style.display = "none";
+    document.body.appendChild(su);
+
+    su.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    window.addEventListener("scroll", () => {
+        su.style.display = scrollY > 300 ? "block" : "none";
+    });
+
+    // 4. Effetto fade-in (immagini + box progetto)
+    const elementi = document.querySelectorAll("img, .progetto");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elementi.forEach(e => observer.observe(e));
+
+    // 5. Gestione caroselli (sia Progetti che Portfolio)
+    document.querySelectorAll(".carousel").forEach(carousel => {
+        const images = carousel.querySelector(".carousel-images");
+        const imgs = images.querySelectorAll("img");
+        let index = 0;
+
+        const updateCarousel = () => {
+            images.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        carousel.querySelector(".next")?.addEventListener("click", () => {
+            index = (index + 1) % imgs.length;
+            updateCarousel();
+        });
+
+        carousel.querySelector(".prev")?.addEventListener("click", () => {
+            index = (index - 1 + imgs.length) % imgs.length;
+            updateCarousel();
+        });
+    });
+
+    // 6. Lightbox per ingrandire immagini
+    const overlay = document.createElement("div");
+    overlay.id = "lightbox-overlay";
+    overlay.style.display = "none";
+    const imgZoom = document.createElement("img");
+    overlay.appendChild(imgZoom);
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll("#portfolio img, #progetti img").forEach(img => {
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => {
+            imgZoom.src = img.src;
+            overlay.style.display = "flex";
+        });
+    });
+
+    overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+    });
+});
+
