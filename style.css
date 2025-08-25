@@ -164,8 +164,8 @@ nav a.attivo {
 }
 
 .galleria img {
-    width: 30%;
-    margin: 10px;
+    width: 45%;
+    margin: 15px 0;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
