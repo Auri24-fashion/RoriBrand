@@ -144,7 +144,26 @@ nav a.attivo {
 
 /* Portfolio */
 #portfolio {
-    {
+    padding: 40px 20px;
+    background-color: #fff5f8; /* sfondo rosa chiaro per differenziarla dai progetti */
+    text-align: center;
+}
+
+#portfolio h2 {
+    font-size: 2.5em;
+    color: #ff1493; /* Magenta per evidenziare il titolo */
+    margin-bottom: 20px;
+}
+
+.galleria {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Singolo progetto del portfolio */
+.galleria .progetto {
     width: 45%;
     margin: 15px 0;
     background-color: white;
@@ -154,24 +173,31 @@ nav a.attivo {
     transform: translateY(20px);
     opacity: 1;
 }
-    padding: 40px 20px;
-    text-align: center;
+
+/* Titolo progetto portfolio */
+.galleria .progetto h3 {
+    font-size: 1.8em;
+    color: #4b0082;
+    margin-bottom: 15px;
 }
 
-#portfolio h2 {
-    font-size: 2.5em;
-    color: #ff1493;
+/* Descrizione progetto portfolio */
+.galleria .progetto p {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 10px;
 }
 
-.galleria img {
-    width: 45%;
-    margin: 15px 0;
+/* Immagini del portfolio (carosello o singole) */
+.galleria .progetto img {
+    width: 100%;
     border-radius: 10px;
+    margin-bottom: 15px;
     transition: transform 0.3s ease;
 }
 
-.galleria img:hover {
-    transform: scale(1.1);
+.galleria .progetto img:hover {
+    transform: scale(1.05);
 }
 
 /* Sezione Contatti */
