@@ -110,4 +110,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+// Caroselli multipli
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const images = carousel.querySelector('.carousel-images');
+  const imgs = images.querySelectorAll('img');
+  let index = 0;
+
+  // Funzione aggiorna slide
+  function showSlide() {
+    images.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // Avanti
+  carousel.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % imgs.length;
+    showSlide();
+  });
+
+  // Indietro
+  carousel.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + imgs.length) % imgs.length;
+    showSlide();
+  });
+});
 
