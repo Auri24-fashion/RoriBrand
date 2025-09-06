@@ -87,7 +87,7 @@ nav a.attivo {
 /* immagini in griglia: 2 per riga, rapporto costante */
 .chi-sono-immagini img {
     width: 48%;
-    aspect-ratio: 3 / 4;   /* rapporto fisso, no distorsioni */
+    aspect-ratio: 3 / 4;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -117,6 +117,7 @@ nav a.attivo {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .progetto {
@@ -162,37 +163,9 @@ nav a.attivo {
     margin-bottom: 20px;
 }
 
+/* IMPORTANTE: .galleria NON è più un contenitore flex, per evitare layout "spaccato" */
 .galleria {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Singolo progetto del portfolio */
-.galleria .progetto {
-    width: 45%;
-    margin: 15px 0;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transform: translateY(20px);
-    opacity: 1;
-}
-
-/* Titolo progetto portfolio */
-.galleria .progetto h3 {
-    font-size: 1.8em;
-    color: #4b0082;
-    margin-bottom: 15px;
-}
-
-/* Descrizione progetto portfolio */
-.galleria .progetto p {
-    font-size: 1.2em;
-    color: #333;
-    margin-top: 10px;
+    display: block;
 }
 
 /* Carosello */
@@ -200,9 +173,11 @@ nav a.attivo {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
+    --slide-ratio: 3 / 4;                 /* rapporto visivo uniforme */
+    --slide-height: clamp(260px, 60vw, 560px);
 }
 
 .carousel-images {
@@ -211,14 +186,15 @@ nav a.attivo {
     width: 100%;
 }
 
-/* UNA immagine per volta (100% larghezza) */
+/* UNA immagine per volta: ogni IMG occupa il 100% del carosello */
 .carousel-images img {
     flex: 0 0 100%;
     max-width: 100%;
-    aspect-ratio: 3 / 4;  /* uniforme e anti-distorsione */
-    height: auto;
-    border-radius: 10px;
+    height: var(--slide-height);          /* altezza coerente */
+    aspect-ratio: var(--slide-ratio);     /* aiuta i browser moderni */
     object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
     display: block;
 }
 
