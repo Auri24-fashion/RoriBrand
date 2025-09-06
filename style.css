@@ -64,39 +64,42 @@ nav a.attivo {
 #chi-sono {
     padding: 40px 20px;
     background-color: #fff5f8;
-      }
-    
-    .chi-sono-contenuto {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        margin: 2rem 0;
-        padding: 0 1rem;
-      }
-      
-      .chi-sono-immagini {
-        flex: 1 1 300px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-      }
-      
-      .chi-sono-immagini img {
-        width: 48%;
-        border-radius: 8px;
-        object-fit: cover;
-      }
-      
-      .chi-sono-testo {
-        flex: 1 1 300px;
-        text-align: center;
-        max-width: 600px;
-        line-height: 1.6;
-      }
-    
+}
+
+.chi-sono-contenuto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.chi-sono-immagini {
+    flex: 1 1 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* immagini in griglia: 2 per riga, rapporto costante */
+.chi-sono-immagini img {
+    width: 48%;
+    aspect-ratio: 3 / 4;   /* rapporto fisso, no distorsioni */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+}
+
+.chi-sono-testo {
+    flex: 1 1 300px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+}
 
 /* Sezione Progetti */
 #progetti {
@@ -127,10 +130,14 @@ nav a.attivo {
     opacity: 1;
 }
 
+/* Immagini nelle card progetto */
 .progetto img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
     margin-bottom: 15px;
+    object-fit: cover;
+    display: block;
 }
 
 .progetto h3 {
@@ -145,13 +152,13 @@ nav a.attivo {
 /* Portfolio */
 #portfolio {
     padding: 40px 20px;
-    background-color: #fff5f8; /* sfondo rosa chiaro per differenziarla dai progetti */
+    background-color: #fff5f8;
     text-align: center;
 }
 
 #portfolio h2 {
     font-size: 2.5em;
-    color: #ff1493; /* Magenta per evidenziare il titolo */
+    color: #ff1493;
     margin-bottom: 20px;
 }
 
@@ -188,119 +195,6 @@ nav a.attivo {
     margin-top: 10px;
 }
 
-/* Immagini del portfolio (carosello o singole) */
-.galleria .progetto img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
-
-.galleria .progetto img:hover {
-    transform: scale(1.05);
-}
-
-
-/* Sezione Contatti */
-#contatti {
-    padding: 40px 20px;
-    background-color: #e0ffe0;
-    text-align: center;
-}
-
-#contatti h2 {
-    font-size: 2.5em;
-    color: #4b0082;
-}
-
-#contatti p {
-    font-size: 1.2em;
-    margin: 20px 0;
-    line-height: 1.6;
-}
-
-form {
-    display: inline-block;
-    text-align: left;
-    max-width: 500px;
-    width: 100%;
-}
-
-form label {
-    font-size: 1.2em;
-    margin-bottom: 8px;
-    display: block;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 10px 0;
-    margin-bottom: 15px;
-    border: 2px solid #4b0082;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-form textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.privacy-consent {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.privacy-consent input {
-    margin-right: 10px;
-}
-
-form button {
-    padding: 10px 20px;
-    background-color: #ff1493;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
-}
-
-form button:hover {
-    background-color: #00bfff;
-}
-
-.required {
-    color: red;
-}
-
-/* Social */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.social-links a {
-    color: #ff1493;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.social-links a:hover {
-    color: #00bfff;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    background-color: #4b0082;
-    color: white;
-    padding: 20px 0;
-}
-
 /* Carosello */
 .carousel {
     position: relative;
@@ -314,15 +208,18 @@ footer {
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease;
-    width:100%;
+    width: 100%;
 }
 
+/* UNA immagine per volta (100% larghezza) */
 .carousel-images img {
-    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    aspect-ratio: 3 / 4;  /* uniforme e anti-distorsione */
     height: auto;
+    border-radius: 10px;
     object-fit: cover;
     display: block;
-    border-radius: 10px;
 }
 
 .carousel button {
@@ -339,13 +236,8 @@ footer {
     z-index: 1;
 }
 
-.carousel .prev {
-    left: 10px;
-}
-
-.carousel .next {
-    right: 10px;
-}
+.carousel .prev { left: 10px; }
+.carousel .next { right: 10px; }
 
 .carousel button:hover {
     background-color: rgba(0, 191, 255, 0.8);
@@ -404,21 +296,10 @@ footer {
         align-items: center;
     }
 
-    .chi-sono-testo {
-        text-align: left;
-    }
-
-    .chi-sono-immagini {
-        max-width: 100%;
-    }
-
-    .galleria-progetti .progetto {
-        width: 100%;
-    }
-
-    .carousel {
-        flex-direction: column;
-    }
+    .chi-sono-testo { text-align: left; }
+    .chi-sono-immagini { max-width: 100%; }
+    .galleria-progetti .progetto { width: 100%; }
+    .carousel { flex-direction: column; }
 }
 
 @media (max-width: 600px) {
@@ -429,52 +310,14 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .carousel img {
-        width: 100%;
-    }
-
-    .contact-section {
-        padding: 10px;
-    }
+    .carousel img { width: 100%; }
+    .contact-section { padding: 10px; }
 }
-/* Anti-distorsione globale */
+
+/* Regola globale per immagini coerente con le slide */
 img {
   display: block;
   max-width: 100%;
   width: 100%;
   height: auto;
-}
-
-/* Griglie/collage: usa un wrapper .thumb attorno all'img */
-.thumb {
-  position: relative;
-  aspect-ratio: 3 / 4;      /* scegli 1/1, 4/5, 16/9 in base alla sezione */
-  overflow: hidden;
-}
-.thumb > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        /* riempie senza deformare */
-  object-position: center;
-}
-
-/* Slider/caroselli (adatta i selettori ai tuoi) */
-.slider .slide { 
-  min-height: clamp(220px, 40vh, 560px);
-}
-.slider .slide img,
-.carousel img,
-.swiper-slide img,
-.slick-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Hero con background-image */
-.hero {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
