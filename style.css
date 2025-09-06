@@ -436,3 +436,12 @@ footer {
         padding: 10px;
     }
 }
+@media (max-width: 480px) {
+@media (max-width: 480px) {
+img {
+    display: block;
+    max-width: 100%
+    width: 100%; 
+    height: auto;
+    }
+    
