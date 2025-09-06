@@ -436,12 +436,44 @@ footer {
         padding: 10px;
     }
 }
-@media (max-width: 480px) {
-@media (max-width: 480px) {
+/* Anti-distorsione globale */
 img {
-    display: block;
-    max-width: 100%
-    width: 100%; 
-    height: auto;
-    }
-    
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+/* Griglie/collage: usa un wrapper .thumb attorno all'img */
+.thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;      /* scegli 1/1, 4/5, 16/9 in base alla sezione */
+  overflow: hidden;
+}
+.thumb > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* riempie senza deformare */
+  object-position: center;
+}
+
+/* Slider/caroselli (adatta i selettori ai tuoi) */
+.slider .slide { 
+  min-height: clamp(220px, 40vh, 560px);
+}
+.slider .slide img,
+.carousel img,
+.swiper-slide img,
+.slick-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hero con background-image */
+.hero {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
