@@ -233,6 +233,9 @@ nav a.attivo {
 }
 
 /* Contatti */
+#contatti {
+    text-align: center;
+}
 #contatti form {
     display: inline-block;
     text-align: center;
