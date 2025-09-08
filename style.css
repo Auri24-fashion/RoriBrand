@@ -159,7 +159,7 @@ nav a.attivo {
 
 #portfolio h2 {
     font-size: 2.5em;
-    color: #ff1493;
+    color: #4b0082;
     margin-bottom: 20px;
 }
 
@@ -235,6 +235,10 @@ nav a.attivo {
 /* Contatti */
 #contatti {
     text-align: center;
+}
+
+#contatti h2 {
+    color: #4b0082;
 }
 #contatti form {
     display: inline-block;
