@@ -238,8 +238,8 @@ nav a.attivo {
 }
 #contatti form {
     display: inline-block;
-    text-align: center;
-    max-width: 500px;
+    text-align: left;
+    max-width: 570px;
     width: 100%;
 }
 
