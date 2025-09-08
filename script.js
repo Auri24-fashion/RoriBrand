@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = "none";
     });
 
-    // 🎠 Carousel per progetti (visione con bottoni)
+    // Carousel per progetti (visione con bottoni)
     document.querySelectorAll('.carousel').forEach(carousel => {
         const images = carousel.querySelector('.carousel-images');
         const imgs = images.querySelectorAll('img');
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.appendChild(imgZoom);
     document.body.appendChild(overlay);
 
-    document.querySelectorAll("#portfolio img, #progetti img").forEach(img => {
+    document.querySelectorAll("#carousel-images img, #progetto img").forEach(img => {
         img.style.cursor = "zoom-in";
         img.addEventListener("click", () => {
             imgZoom.src = img.src;
