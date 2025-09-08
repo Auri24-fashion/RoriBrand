@@ -159,11 +159,10 @@ nav a.attivo {
 
 #portfolio h2 {
     font-size: 2.5em;
-    color: #ff1493;
+    color: #4b0082;
     margin-bottom: 20px;
 }
 
-/* IMPORTANTE: .galleria NON è più un contenitore flex, per evitare layout "spaccato" */
 .galleria {
     display: block;
 }
@@ -176,7 +175,7 @@ nav a.attivo {
     margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
-    --slide-ratio: 3 / 4;                 /* rapporto visivo uniforme */
+    --slide-ratio: 3 / 4;                
     --slide-height: clamp(260px, 60vw, 560px);
 }
 
@@ -190,8 +189,8 @@ nav a.attivo {
 .carousel-images img {
     flex: 0 0 100%;
     max-width: 100%;
-    height: var(--slide-height);          /* altezza coerente */
-    aspect-ratio: var(--slide-ratio);     /* aiuta i browser moderni */
+    height: var(--slide-height);          
+    aspect-ratio: var(--slide-ratio);     
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
