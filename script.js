@@ -229,19 +229,3 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = "none";
     });
 });
-
-/// Spostato sotto il carosello del vestito
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.querySelector('.galleria-progetti');
-  if (!container) return;
-
-  // identifica le sezioni in base al testo dell'h3 (fallback semplice)
-  const progetti = Array.from(container.querySelectorAll('.progetto'));
-  const donne = progetti.find(p => p.querySelector('h3')?.textContent.trim().toLowerCase().includes('donne shakespeare'));
-  const corsetto = progetti.find(p => p.querySelector('h3')?.textContent.trim().toLowerCase().includes('corsetto'));
-
-  // se entrambe esistono, appendi corsetto dopo donne (appendChild sposta nel DOM)
-  if (donne && corsetto) {
-    container.insertBefore(corsetto, donne.nextSibling);
-  }
-});
