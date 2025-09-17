@@ -236,6 +236,11 @@ nav a.attivo {
 #contatti {
     text-align: center;
 }
+#contatti {
+  text-align: center;
+  width: 95%;
+  margin: auto;
+}
 
 #contatti h2 {
     color: #4b0082;
