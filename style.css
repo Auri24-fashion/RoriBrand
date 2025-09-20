@@ -299,6 +299,18 @@ nav a.attivo {
     background-color: #00bfff;
 }
 
+/*Button*/
+button#back-to-top{
+  position: fixed;
+  bottom: 8px;
+  right: 26px;
+  border: 1px solid #ff1493;
+  background-color: #00bfff;
+  padding: 10px;
+  border-radius: 13px;
+}
+
+
 /* Social */
 .social-links {
     display: flex;
