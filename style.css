@@ -293,6 +293,7 @@ nav a.attivo {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
+    margin-bottom: 15px;
 }
 
 #contatti button:hover {
